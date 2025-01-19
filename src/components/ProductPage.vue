@@ -1,17 +1,21 @@
 <template>
     <ProductHeader />
-    <ProductCarousel />
-    <ProductDescription />
+    <div class="product_container">
+        <ProductCarousel />
+        <ProductDescription />
+    </div>
     <div class="product_cards">
         <h2 class="product_cards__heading">ПОХОЖИЕ ТОВАРЫ</h2>
-        <ProductCard 
-        v-for="(card, index) in productCard"   
+        <div class="product_cards__container">
+          <ProductCard 
+            v-for="(card, index) in productCard"   
             :key="index"   
             :name="card.name"   
             :img="card.img"   
             :price="card.price"   
             :priceOld="card.priceOld"
-        />
+           />
+        </div>
     </div>
 </template>
 
@@ -37,6 +41,9 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
            {name: 'ПЛАТЬЕ МАКСИ С ЯРУСАМИ, БЕЛЫЙ', price: '10 500 RUB', img: 'https://i.postimg.cc/KKXwqhrN/Image3'},
            {name: 'КОМБИНЕЗОН СО СТОЙКОЙ, ЧёРНЫЙ', price: '9500 RUB', img: 'https://i.postimg.cc/7CgcjtKy/Image4.png'},
           ],
+          ProductCarousel: [
+          {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/bsBKntZ4/Image.png',  price: '14 900 RUB', price_old: '8 000 RUB'},
+          ]
           }
         }
     }
@@ -56,12 +63,23 @@ box-sizing: border-box;
    h1 {
     font-family: Helvetica;
    }
+   .product_container {
+    display: flex;
+    flex-direction: row;
+   }
    .product_cards {
+    display: flex;
+    flex-direction: column;
     &__heading {
         font-family: Helvetica;
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
+    }
+    &__container {
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
     }
    }
 </style>

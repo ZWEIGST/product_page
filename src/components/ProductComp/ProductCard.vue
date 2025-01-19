@@ -20,6 +20,9 @@
 </script>
 
 <style lang="scss" scoped>
+a {
+    text-decoration: none;
+}
 .product_card {
  &__container {
   display: flex;
@@ -33,6 +36,7 @@
     color:rgba(51, 51, 51, 1);
     font-size: 12px;
     line-height: 14px;
+    text-decoration: none;
  }
  &__price {
     color:rgba(51, 51, 51, 1);
