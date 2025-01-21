@@ -1,6 +1,9 @@
 <template>
     <ProductHeader />
     <div class="product_container">
+        <div class="product_container__gallery">
+            <img src="https://i.postimg.cc/WF59PBrx/Gallery-Big.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/fSk8W8fy/Gallery-small-2.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/7bLsNLr4/Gallery-small-3.png" alt="product image" class="product_container__img">
+        </div>
         <ProductCarousel />
         <ProductDescription />
     </div>
@@ -66,6 +69,16 @@ box-sizing: border-box;
    .product_container {
     display: flex;
     flex-direction: row;
+    &__gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-right: 30px;
+    }
+    &__img {
+        max-width: 70px;
+        height: 88px;
+    }
    }
    .product_cards {
     display: flex;

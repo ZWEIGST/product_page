@@ -49,12 +49,14 @@ import ProductAccordion from '../ProductAccordion.vue';
 
 <style lang="scss" scoped>
 .product_description {
+    margin-left: 61px;
     &__heading {
         font-family: Helvetica;
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
         color: rgba(51, 51, 51, 1);
+        margin-top: 0;
     }
     &__price {
         font-family: Helvetica;
@@ -93,6 +95,15 @@ import ProductAccordion from '../ProductAccordion.vue';
         margin-top: 3px;
     }
 }
+// .product_color__btn1:hover {
+//     border: 1px solid rgba(189, 189, 189, 1);
+// }
+.product_color__btn2:hover {
+    border: 1px solid rgba(189, 189, 189, 1);
+}
+.product_color__btn3:hover {
+    border: 1px solid rgba(189, 189, 189, 1);
+}
 .product_color {
     &__heading {
         font-family: Helvetica;
@@ -109,22 +120,25 @@ import ProductAccordion from '../ProductAccordion.vue';
           width: 28px;  
           height: 27px;
           background-color: rgba(255, 255, 255, 1);
+          border: 1px solid rgba(189, 189, 189, 1);
         }
         &__btn2 {
           width: 28px;  
           height: 27px;
-          background-color: rgba(0, 0, 0, 1);          ;
+          background-color: rgba(0, 0, 0, 1);
+          border: none;    
         }
         &__btn3 {
           width: 28px;  
           height: 27px;
           background-color: rgba(249, 241, 220, 1);
+          border: none;
         }
 }
 .product_cart {
     &__btn {
      height: 44px;
-     max-width: 306px;
+     width: 306px;
      background-color: rgba(0, 0, 0, 1);
      color:rgba(255, 255, 255, 1);
      font-family: Helvetica;
@@ -132,6 +146,7 @@ import ProductAccordion from '../ProductAccordion.vue';
      font-weight: 400;
      line-height: 15px;
      margin-right: 10px;
+     margin-top: 36px;
     }
     &__favorite {
         width: 44px;

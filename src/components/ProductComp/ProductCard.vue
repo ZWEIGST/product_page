@@ -27,6 +27,8 @@ a {
  &__container {
   display: flex;
   flex-direction: column;
+  margin-left: 15px;
+  margin-bottom: 7px;
  }
 
  &__img {
