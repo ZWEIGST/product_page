@@ -7,7 +7,7 @@
         <div class="product_size__btns">
             <div class="product_size__choose">
             <button class="product_size__button">XS</button>
-            <h4 class="product_size__remainder">Мало</h4>
+            <h4 class="product_size__remainder">мало</h4>
         </div>
         <div class="product_size__choose">
             <button class="product_size__button">S</button>
@@ -15,7 +15,7 @@
         </div>
         <div class="product_size__choose">
             <button class="product_size__button">M</button>
-            <h4 class="product_size__remainder">Подписка</h4>
+            <h4 class="product_size__remainder">подписка</h4>
         </div>
         </div>
         <div class="product_color">
@@ -26,8 +26,8 @@
                 <button class="product_color__btn3"></button>
             </div>
             <div class="product_cart">
-                <button class="product_cart__btn">добавить в корзину</button>
-                <button class="product_cart__favorite"><svg class="product_header__nav-favorite" width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="product_cart__btn" v-show="isDesktop">добавить в корзину</button>
+                <button class="product_cart__favorite"><svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z" fill="black"/>
                 </svg></button>
             </div>
@@ -40,14 +40,39 @@
 <script>
 import ProductAccordion from '../ProductAccordion.vue';
 
-    export default {
-        components: {
-            ProductAccordion,
-        }
-    }
+export default {
+  components: {
+    ProductAccordion,
+  },
+  data() {
+    return {
+      isDesktop: false,
+    };
+  },
+  methods: {
+    checkViewport() {
+      this.isDesktop = window.innerWidth > 768;
+    },
+  },
+  mounted() { 
+    this.checkViewport();
+    window.addEventListener('resize', this.checkViewport);
+  },
+  beforeUnmount() { 
+    window.removeEventListener('resize', this.checkViewport);
+  },
+  checkViewport() {
+  this.isDesktop = window.innerWidth > 766;
+  // Принудительное обновление
+  this.$forceUpdate(); 
+},
+}
 </script>
 
 <style lang="scss" scoped>
+html {
+    box-sizing: border-box;
+}
 .product_description {
     margin-left: 61px;
     &__heading {
@@ -55,7 +80,7 @@ import ProductAccordion from '../ProductAccordion.vue';
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
-        color: rgba(51, 51, 51, 1);
+        color:rgba(51, 51, 51, 1);
         margin-top: 0;
     }
     &__price {
@@ -78,8 +103,8 @@ import ProductAccordion from '../ProductAccordion.vue';
         gap: 14px;
     }
     &__choose {
-
-
+      display: flex;
+      flex-direction: column;
     }
     &__button {
         width: 65px;
@@ -93,6 +118,8 @@ import ProductAccordion from '../ProductAccordion.vue';
         font-weight: 400;
         line-height: 14px;
         margin-top: 3px;
+        justify-content: center;
+        color: rgba(130, 130, 130, 1);
     }
 }
 // .product_color__btn1:hover {
@@ -110,6 +137,7 @@ import ProductAccordion from '../ProductAccordion.vue';
         font-size: 10px;
         font-weight: 400;
         line-height: 14px;
+        color: rgba(79, 79, 79, 1);
     }
     &__choose {
      display: flex;
@@ -136,6 +164,9 @@ import ProductAccordion from '../ProductAccordion.vue';
         }
 }
 .product_cart {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 36px;
     &__btn {
      height: 44px;
      width: 306px;
@@ -146,12 +177,13 @@ import ProductAccordion from '../ProductAccordion.vue';
      font-weight: 400;
      line-height: 15px;
      margin-right: 10px;
-     margin-top: 36px;
+     display: block;
     }
     &__favorite {
         width: 44px;
         height: 44px;
         background-color: rgba(255, 255, 255, 1);
+        border: solid 1px;
     }
 }
 </style>

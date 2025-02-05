@@ -25,14 +25,23 @@ a {
 }
 .product_card {
  &__container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 15px;
+  display: grid;
+  grid-template-rows: auto;
   margin-bottom: 7px;
+  row-gap: 9px;
+  box-sizing: border-box;
+  &:first-child {
+    margin-left: 40px;
+  }
+
+  &:last-child {
+    margin-right: 40px;
  }
+}
 
  &__img {
    height: 444px;
+   width: 100%;
  }
  &__name {
     color:rgba(51, 51, 51, 1);
