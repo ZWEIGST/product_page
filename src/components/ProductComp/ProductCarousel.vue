@@ -44,7 +44,7 @@
         this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;  
       },  
       goTo(index) {  
-        this.currentIndex = index;  // <- Добавлена точка с запятой (опционально)
+        this.currentIndex = index;
       },  
       checkMobile() {  
         this.isMobile = window.innerWidth <= 766;  
@@ -59,14 +59,14 @@
     },  
   }  
   </script>
-  
+   
   <style lang="scss" scoped>  
   .carousel {  
     position: relative;  
     max-width: 518px; 
     height: 693px;  
     overflow: hidden;  
-  &_indicators {
+    &_indicators {
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -135,4 +135,14 @@
     right: 16px;
     color: rgba(0, 0, 0, 1);
   }  
+@media  (max-width: 766px) {
+  .carousel {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  &_img {
+    width:100%;
+  }
+  }
+}
   </style>

@@ -59,9 +59,7 @@
   },
     }
 </script>
-<style lang="scss">
-@import '@/assets/styles/mobile.scss';
-</style>
+
 <style lang="scss" scoped>
 .product_header {
     display: flex;
@@ -80,5 +78,39 @@
         margin: 33px 48px 33px 0;
         gap: 16px;
     }
+}
+@media  (max-width: 766px) {
+  .product_header {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 16px;
+
+    &__logo {
+      position: absolute;
+      left: calc(50% - 38px / 2);
+      margin: 17px 0 16px 0;
+    }
+
+    &__nav {
+      width: 100%;
+      margin: 20px 0;
+      justify-content: space-between;
+      margin: 15px 15px 16px;
+
+      &-cab {
+        display: none;
+      }
+      a:first-child,
+      a:nth-child(2) {
+        margin-right: auto;
+      }
+      &-cart {
+        margin-left: auto;
+      }
+    }
+  }
 }
 </style>

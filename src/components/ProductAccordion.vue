@@ -69,4 +69,20 @@
     }
    } 
 }
+@media  (max-width: 766px) {
+ .product_accordion {
+    align-self: center;
+    &__item {
+        margin-left: 16px;
+        margin-right: 23px;
+        &:first-child {
+            margin-top: 32px;
+        }
+    }
+    &-body {
+    display: none;
+    font-size: 20px;
+    }
+  } 
+}
 </style>

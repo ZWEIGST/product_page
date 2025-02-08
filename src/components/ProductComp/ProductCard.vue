@@ -61,4 +61,30 @@ a {
     line-height: 14px;
  }
 }
+@media  (max-width: 766px) {
+  .product_card {
+  &__container {
+   width: 100%;
+   height: auto;
+   &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+ }
+  }
+  &__heading {
+    margin-top: 9px;
+  }
+  &__img {
+    height: auto;
+    aspect-ratio: 3/5;
+    object-fit: cover;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  }
+}
 </style>
