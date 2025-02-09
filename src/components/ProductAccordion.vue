@@ -71,10 +71,11 @@
 }
 @media  (max-width: 766px) {
  .product_accordion {
-    align-self: center;
+    align-items: flex-start;
+    width: 100%;
     &__item {
-        margin-left: 16px;
         margin-right: 23px;
+        width: 100%;
         &:first-child {
             margin-top: 32px;
         }

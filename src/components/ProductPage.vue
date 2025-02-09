@@ -91,6 +91,7 @@ box-sizing: border-box;
         gap: 4px;
         margin-right: 30px;
         margin-left: 172px;
+        display: block;
     }
     &__img {
         max-width: 70px;
@@ -128,6 +129,9 @@ box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    &__gallery {
+      display: none;
+    }
   }
   .product_carousel_container {
     display: flex;

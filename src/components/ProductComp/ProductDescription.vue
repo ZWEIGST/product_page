@@ -1,6 +1,6 @@
 <template>
     <div class="product_description">
-     <h2 class="product_description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
+      <h2 class="product_description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
      <h3 class="product_description__price">8900 RUB</h3>
      <div class="product_size">
         <h4 class="product_size__heading">Размеры</h4>
@@ -25,14 +25,14 @@
                 <button class="product_color__btn2"></button>
                 <button class="product_color__btn3"></button>
             </div>
-            <div class="product_cart">
-                <button class="product_cart__btn" v-show="isDesktop">добавить в корзину</button>
+          </div>
+            <div class="product_cart" v-show="isDesktop">
+                <button class="product_cart__btn">добавить в корзину</button>
                 <button class="product_cart__favorite"><svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z" fill="black"/>
                 </svg></button>
             </div>
             <ProductAccordion />
-        </div>
      </div>
     </div>
 </template>
@@ -47,12 +47,16 @@ export default {
   data() {
     return {
       isDesktop: false,
+      isMobile: false,
     };
   },
   methods: {
     checkViewport() {
-      this.isDesktop = window.innerWidth > 768;
+      this.isDesktop = window.innerWidth > 767;
     },
+    checkMobile() {  
+        this.isMobile = window.innerWidth <= 766;  
+      },  
   },
   mounted() { 
     this.checkViewport();
@@ -62,7 +66,7 @@ export default {
     window.removeEventListener('resize', this.checkViewport);
   },
   checkViewport() {
-  this.isDesktop = window.innerWidth > 766;
+  this.isDesktop = window.innerWidth > 767;
   // Принудительное обновление
   this.$forceUpdate(); 
 },
@@ -150,18 +154,18 @@ html {
           background-color: rgba(255, 255, 255, 1);
           border: 1px solid rgba(189, 189, 189, 1);
         }
-        &__btn2 {
-          width: 28px;  
-          height: 27px;
-          background-color: rgba(0, 0, 0, 1);
-          border: none;    
-        }
-        &__btn3 {
-          width: 28px;  
-          height: 27px;
-          background-color: rgba(249, 241, 220, 1);
-          border: none;
-        }
+          &__btn2 {
+            width: 28px;  
+            height: 27px;
+            background-color: rgba(0, 0, 0, 1);
+            border: none;    
+          }
+          &__btn3 {
+            width: 28px;  
+            height: 27px;
+            background-color: rgba(249, 241, 220, 1);
+            border: none;
+          }
 }
 .product_cart {
     display: grid;
@@ -195,9 +199,14 @@ html {
   flex-direction: column;
   align-items: flex-start;
   width: calc(100% - 16px);
-  &__heading,
+  margin-left: 16px;
+  
+  &__heading {
+    // order: 1;
+  }
   &__price {
     width: 100%;
+    // order: 3;
   }
   }
 
@@ -205,14 +214,13 @@ html {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
+  align-items: flex-start;
+  &__button {
+  }
   &__btns {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    width: 100%;
+    justify-content: flex-start;
+    row-gap: 14px;
   }
 
   &__choose {
@@ -224,14 +232,14 @@ html {
 
   &__button {
     width: 80px;
+    margin: 0;
   }
   }
 
   .product_color {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
 
   &__choose {
     display: flex;
@@ -248,15 +256,17 @@ html {
   width: 100%;
 
   &__btn {
-    width: 100%;
-    max-width: 300px;
-    order: 1;
-    border: none;
+  display:none;
   }
 
   &__favorite {
-    order: 2;
-    margin-top: 10px;
+    right: 0;
+    margin: 0;
+    border: none;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 255, 255, 1);
+    // order: 0;
   }
   }
 }
