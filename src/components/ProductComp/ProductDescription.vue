@@ -201,9 +201,6 @@ html {
   width: calc(100% - 16px);
   margin-left: 16px;
   
-  &__heading {
-    // order: 1;
-  }
   &__price {
     width: 100%;
     // order: 3;
@@ -215,8 +212,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  &__button {
-  }
+
   &__btns {
     flex-wrap: wrap;
     justify-content: flex-start;
