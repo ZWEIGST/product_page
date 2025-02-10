@@ -20,6 +20,18 @@
 </script>
 
 <style lang="scss" scoped>
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Helvetica;
+    src: url(/fonts/helvetica_regular.otf);
+   }
+   h1, h2, h3 {
+    font-family: Helvetica;
+   }
 a {
     text-decoration: none;
 }
@@ -42,12 +54,15 @@ a {
  &__img {
    height: 444px;
    width: 100%;
+   object-fit: cover;
  }
  &__name {
     color:rgba(51, 51, 51, 1);
-    font-size: 12px;
+    font-size: 10px;
     line-height: 14px;
+    font-weight: 400;
     text-decoration: none;
+    font-family: Helvetica;
  }
  &__price {
     color:rgba(51, 51, 51, 1);

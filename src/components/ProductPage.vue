@@ -2,7 +2,7 @@
     <ProductHeader />
     <div class="product_container">
         <div class="product_container__gallery" v-show="isDesktop">
-            <img src="https://i.postimg.cc/sGFWVnbp/Gallery-Big.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/fSk8W8fy/Gallery-small-2.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/7bLsNLr4/Gallery-small-3.png" alt="product image" class="product_container__img">
+            <img src="https://i.postimg.cc/5yYLGC7D/Gallery-Big.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/fSk8W8fy/Gallery-small-2.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/7bLsNLr4/Gallery-small-3.png" alt="product image" class="product_container__img">
         </div>
         <div class="product_carousel_container">
             <ProductCarousel />
@@ -41,13 +41,13 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
         data () {
           return {
           productCard: [
-           {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/bsBKntZ4/Image.png',  price: '14 900 RUB', price_old: '8 000 RUB'},
+           {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/bsBKntZ4/Image.png',  price: '14 900 RUB', priceOld: '8 000 RUB'},
            {name: 'ЖАКЕТ ДВУБОРТНЫЙ, СЕРО-ГОЛУБОЙ', price: '8900 RUB', img: 'https://i.postimg.cc/v4xCtZ9T/Image2.png'},
            {name: 'ПЛАТЬЕ МАКСИ С ЯРУСАМИ, БЕЛЫЙ', price: '10 500 RUB', img: 'https://i.postimg.cc/cv1n4tk5/Image3.png'},
            {name: 'КОМБИНЕЗОН СО СТОЙКОЙ, ЧёРНЫЙ', price: '9500 RUB', img: 'https://i.postimg.cc/7CgcjtKy/Image4.png'},
           ],
           ProductCarousel: [
-          {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/bsBKntZ4/Image.png',  price: '14 900 RUB', price_old: '8 000 RUB'},
+          {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/5yYLGC7D/Gallery-Big.png',  price: '14 900 RUB', priceOld: '8 000 RUB'},
           ],
           isDesktop: false,
           }; 
@@ -69,10 +69,10 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
 </script>
 
 <style lang="scss" scoped>
-html {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -84,14 +84,13 @@ box-sizing: border-box;
    }
    .product_container {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     &__gallery {
         display: flex;
         flex-direction: column;
         gap: 4px;
         margin-right: 30px;
-        margin-left: 172px;
-        display: block;
     }
     &__img {
         max-width: 70px;
@@ -109,8 +108,7 @@ box-sizing: border-box;
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
-        margin-left: 40px;
-        margin-top: 42px;
+        margin: 42px 0px 31px 40px;
     }
     &__container {
         display: flex;

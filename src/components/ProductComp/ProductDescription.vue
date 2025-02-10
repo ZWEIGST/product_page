@@ -1,7 +1,7 @@
 <template>
     <div class="product_description">
       <h2 class="product_description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
-     <h3 class="product_description__price">8900 RUB</h3>
+      <h3 class="product_description__price">8900 RUB</h3>
      <div class="product_size">
         <h4 class="product_size__heading">Размеры</h4>
         <div class="product_size__btns">
@@ -17,7 +17,7 @@
             <button class="product_size__button">M</button>
             <h4 class="product_size__remainder">подписка</h4>
         </div>
-        </div>
+     </div>
         <div class="product_color">
             <h4 class="product_color__heading">Цвет: белый</h4>
             <div class="product_color__choose">
@@ -25,12 +25,13 @@
                 <button class="product_color__btn2"></button>
                 <button class="product_color__btn3"></button>
             </div>
-          </div>
+        </div>
             <div class="product_cart" v-show="isDesktop">
                 <button class="product_cart__btn">добавить в корзину</button>
-                <button class="product_cart__favorite"><svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z" fill="black"/>
-                </svg></button>
+                <button class="product_cart__favorite">
+                  <svg class="product_cart__favorite-inner" width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z" fill="black"/>
+                  </svg></button>
             </div>
             <ProductAccordion />
      </div>
@@ -74,9 +75,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-html {
+* {  
+    margin: 0;  
+    padding: 0;  
     box-sizing: border-box;
 }
+@font-face {
+    font-family: Helvetica;
+    src: url(/fonts/helvetica_regular.otf);
+   }
+   h1, h2, h3 {
+    font-family: Helvetica;
+   }
 .product_description {
     margin-left: 61px;
     &__heading {
@@ -95,11 +105,13 @@ html {
     }
 }
 .product_size {
+  margin-top: 31px;
     &__heading {
         font-family: Helvetica;
         font-size: 10px;
         font-weight: 400;
         line-height: 14px;
+        margin-bottom: 8px;
     }
     &__btns {
         display: flex;
@@ -109,6 +121,7 @@ html {
     &__choose {
       display: flex;
       flex-direction: column;
+      align-items: center;
     }
     &__button {
         width: 65px;
@@ -126,22 +139,41 @@ html {
         color: rgba(130, 130, 130, 1);
     }
 }
-// .product_color__btn1:hover {
-//     border: 1px solid rgba(189, 189, 189, 1);
-// }
+@keyframes scaleUp {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.product_size__button:hover {
+  cursor: pointer; 
+}
+.product_size__button:active {
+  animation: scaleUp 0.5s ease-in-out;
+}
+.product_color__btn1:hover {
+    cursor: pointer;
+    border-bottom: 1px solid rgba(79, 79, 79, 1);
+}
 .product_color__btn2:hover {
+    cursor: pointer;
     border: 1px solid rgba(189, 189, 189, 1);
 }
 .product_color__btn3:hover {
+    cursor: pointer;
     border: 1px solid rgba(189, 189, 189, 1);
 }
 .product_color {
+  margin-top: 36px;
     &__heading {
         font-family: Helvetica;
         font-size: 10px;
         font-weight: 400;
         line-height: 14px;
         color: rgba(79, 79, 79, 1);
+        margin-bottom: 6px;
     }
     &__choose {
      display: flex;
@@ -153,20 +185,70 @@ html {
           height: 27px;
           background-color: rgba(255, 255, 255, 1);
           border: 1px solid rgba(189, 189, 189, 1);
+          position: relative;
+          &::after {
+              content: '';
+              position: absolute;
+              bottom: -3px;
+              left: 50%; 
+              transform: translateX(-50%); 
+              width: 34px; 
+              height: 1px; 
+              background-color: rgba(79, 79, 79, 1);
+              opacity: 0; 
+              transition: opacity 0.3s ease; 
+            }
+            &:hover::after {
+            opacity: 1;
+            }
         }
           &__btn2 {
             width: 28px;  
             height: 27px;
             background-color: rgba(0, 0, 0, 1);
-            border: none;    
+            border: none;  
+            position: relative;  
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -3px;
+              left: 50%; 
+              transform: translateX(-50%); 
+              width: 34px; 
+              height: 1px; 
+              background-color: rgba(79, 79, 79, 1);
+              opacity: 0; 
+              transition: opacity 0.3s ease; 
+            }
+            &:hover::after {
+            opacity: 1;
+            }
           }
           &__btn3 {
             width: 28px;  
             height: 27px;
             background-color: rgba(249, 241, 220, 1);
             border: none;
+            position: relative;
+          
+            &::after {
+              content: '';
+              position: absolute;
+              bottom: -3px;
+              left: 50%; 
+              transform: translateX(-50%); 
+              width: 34px; 
+              height: 1px; 
+              background-color: rgba(79, 79, 79, 1);
+              opacity: 0; 
+              transition: opacity 0.3s ease; 
+            }
+            &:hover::after {
+            opacity: 1;
+            }
           }
 }
+
 .product_cart {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -182,13 +264,27 @@ html {
      line-height: 15px;
      margin-right: 10px;
      display: block;
+     text-transform: uppercase;
+     border: none;
     }
     &__favorite {
         width: 44px;
         height: 44px;
         background-color: rgba(255, 255, 255, 1);
         border: solid 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &-inner {
+        position: absolute;
+      }
     }
+}
+.product_cart__btn:hover {
+  cursor: pointer;
+}
+.product_cart__favorite:hover {
+  cursor: pointer;
 }
 @media  (max-width: 766px) {
  .product_cart__btn {

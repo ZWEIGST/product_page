@@ -34,7 +34,21 @@
 </script>
 
 <style lang="scss" scoped>
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: Helvetica;
+    src: url(/fonts/helvetica_regular.otf);
+   }
+   h1 {
+    font-family: Helvetica;
+   }
 .product_accordion {
+    display: flex;
+    flex-direction: column;
    &__item {
     border-bottom: 1px solid rgba(224, 224, 224, 1);
     cursor: pointer;
@@ -49,6 +63,8 @@
         line-height: 14px;
         color: rgba(51, 51, 51, 1);
         position: relative;
+        text-transform: uppercase;
+        padding: 14px 0px 12px 0px;
     &::after {
         content: '+';
         color: rgba(189, 189, 189, 1);
@@ -61,10 +77,11 @@
     }
     &.active::after {
         transform: translateY(-50%) rotate(45deg);
+        right: 15px;
+        font-size: 14px;
     }
     }
     &-body {
-    display: none;
     font-size: 20px;
     }
    } 
