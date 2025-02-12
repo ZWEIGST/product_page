@@ -1,45 +1,58 @@
 <template>
-    <div class="product_description">
-      <h2 class="product_description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
-      <h3 class="product_description__price">8900 RUB</h3>
-     <div class="product_size">
-        <h4 class="product_size__heading">Размеры</h4>
-        <div class="product_size__btns">
-            <div class="product_size__choose">
-            <button class="product_size__button">XS</button>
-            <h4 class="product_size__remainder">мало</h4>
+  <div class="product-description">
+    <h2 class="product-description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
+    <h3 class="product-description__price">8900 RUB</h3>
+    <div class="product-size">
+      <h4 class="product-size__heading">Размеры</h4>
+      <div class="product-size__btns">
+        <div class="product-size__choose">
+          <button class="product-size__button">XS</button>
+          <h4 class="product-size__remainder">мало</h4>
         </div>
-        <div class="product_size__choose">
-            <button class="product_size__button">S</button>
-            <h4 class="product_size__remainder"></h4>
+        <div class="product-size__choose">
+          <button class="product-size__button">S</button>
+          <h4 class="product-size__remainder"></h4>
         </div>
-        <div class="product_size__choose">
-            <button class="product_size__button">M</button>
-            <h4 class="product_size__remainder">подписка</h4>
+        <div class="product-size__choose">
+          <button class="product-size__button">M</button>
+          <h4 class="product-size__remainder">подписка</h4>
         </div>
-     </div>
-        <div class="product_color">
-            <h4 class="product_color__heading">Цвет: белый</h4>
-            <div class="product_color__choose">
-                <button class="product_color__btn1"></button>
-                <button class="product_color__btn2"></button>
-                <button class="product_color__btn3"></button>
-            </div>
+      </div>
+      <div class="product-color">
+        <h4 class="product-color__heading">Цвет: белый</h4>
+        <div class="product-color__choose">
+          <button class="product-color__btn1"></button>
+          <button class="product-color__btn2"></button>
+          <button class="product-color__btn3"></button>
         </div>
-            <div class="product_cart" v-show="isDesktop">
-                <button class="product_cart__btn">добавить в корзину</button>
-                <button class="product_cart__favorite">
-                  <svg class="product_cart__favorite-inner" width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z" fill="black"/>
-                  </svg></button>
-            </div>
-            <ProductAccordion />
-     </div>
+      </div>
+      <div class="product-cart" v-show="isDesktop">
+        <button class="product-cart__btn">добавить в корзину</button>
+        <button class="product-cart__favorite">
+          <svg
+            class="product-cart__favorite-inner"
+            width="11"
+            height="14"
+            viewBox="0 0 11 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M5.38273 10.2994L10.7655 14V0H0V14L5.38273 10.2994ZM0.897121 12.3036L5.38273 8.97606L9.86834 12.3036V0.881352H0.897121V12.3036Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+      </div>
+      <ProductAccordion />
     </div>
+  </div>
 </template>
 
 <script>
-import ProductAccordion from '../ProductAccordion.vue';
+import ProductAccordion from "./ProductAccordion.vue";
 
 export default {
   components: {
@@ -55,46 +68,34 @@ export default {
     checkViewport() {
       this.isDesktop = window.innerWidth > 767;
     },
-    checkMobile() {  
-        this.isMobile = window.innerWidth <= 766;  
-      },  
+    checkMobile() {
+      this.isMobile = window.innerWidth <= 766;
+    },
   },
-  mounted() { 
+  mounted() {
     this.checkViewport();
-    window.addEventListener('resize', this.checkViewport);
+    window.addEventListener("resize", this.checkViewport);
   },
-  beforeUnmount() { 
-    window.removeEventListener('resize', this.checkViewport);
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkViewport);
   },
   checkViewport() {
-  this.isDesktop = window.innerWidth > 767;
-  // Принудительное обновление
-  this.$forceUpdate(); 
-},
-}
+    this.isDesktop = window.innerWidth > MIN_DESKTOP_SCREEN_WIDTH;
+    this.$forceUpdate();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-* {  
-    margin: 0;  
-    padding: 0;  
-    box-sizing: border-box;
-}
-@font-face {
-    font-family: Helvetica;
-    src: url(/fonts/helvetica_regular.otf);
-   }
-   h1, h2, h3 {
-    font-family: Helvetica;
-   }
-.product_description {
+@use '../../assets/styles/var.scss';
+.product-description {
     margin-left: 61px;
     &__heading {
         font-family: Helvetica;
         font-size: 12px;
         font-weight: 400;
         line-height: 16px;
-        color:rgba(51, 51, 51, 1);
+        color:var.$colorTextMain;
         margin-top: 0;
     }
     &__price {
@@ -104,7 +105,7 @@ export default {
         line-height: 16px;
     }
 }
-.product_size {
+.product-size {
   margin-top: 31px;
     &__heading {
         font-family: Helvetica;
@@ -126,7 +127,7 @@ export default {
     &__button {
         width: 65px;
         height: 31px;
-        border: 1px solid rgba(51, 51, 51, 1);
+        border: 1px solid var.$colorTextMain;
         background-color:  rgba(255, 255, 255, 1);
     }
     &__remainder {
@@ -136,7 +137,7 @@ export default {
         line-height: 14px;
         margin-top: 3px;
         justify-content: center;
-        color: rgba(130, 130, 130, 1);
+        color: var.$colorTextHelper;
     }
 }
 @keyframes scaleUp {
@@ -147,32 +148,32 @@ export default {
     transform: scale(1);
   }
 }
-.product_size__button:hover {
+.product-size__button:hover {
   cursor: pointer; 
 }
-.product_size__button:active {
+.product-size__button:active {
   animation: scaleUp 0.5s ease-in-out;
 }
-.product_color__btn1:hover {
+.product-color__btn1:hover {
     cursor: pointer;
-    border-bottom: 1px solid rgba(79, 79, 79, 1);
+    border-bottom: 1px solid var.$colorTextAdd;
 }
-.product_color__btn2:hover {
-    cursor: pointer;
-    border: 1px solid rgba(189, 189, 189, 1);
-}
-.product_color__btn3:hover {
+.product-color__btn2:hover {
     cursor: pointer;
     border: 1px solid rgba(189, 189, 189, 1);
 }
-.product_color {
+.product-color__btn3:hover {
+    cursor: pointer;
+    border: 1px solid rgba(189, 189, 189, 1);
+}
+.product-color {
   margin-top: 36px;
     &__heading {
         font-family: Helvetica;
         font-size: 10px;
         font-weight: 400;
         line-height: 14px;
-        color: rgba(79, 79, 79, 1);
+        color: var.$colorTextAdd;
         margin-bottom: 6px;
     }
     &__choose {
@@ -194,7 +195,7 @@ export default {
               transform: translateX(-50%); 
               width: 34px; 
               height: 1px; 
-              background-color: rgba(79, 79, 79, 1);
+              background-color: var.$colorTextAdd;
               opacity: 0; 
               transition: opacity 0.3s ease; 
             }
@@ -216,7 +217,7 @@ export default {
               transform: translateX(-50%); 
               width: 34px; 
               height: 1px; 
-              background-color: rgba(79, 79, 79, 1);
+              background-color: var.$colorTextAdd;
               opacity: 0; 
               transition: opacity 0.3s ease; 
             }
@@ -239,7 +240,7 @@ export default {
               transform: translateX(-50%); 
               width: 34px; 
               height: 1px; 
-              background-color: rgba(79, 79, 79, 1);
+              background-color: var.$colorTextAdd;
               opacity: 0; 
               transition: opacity 0.3s ease; 
             }
@@ -249,7 +250,7 @@ export default {
           }
 }
 
-.product_cart {
+.product-cart {
     display: grid;
     grid-template-columns: 2fr 1fr;
     margin-top: 36px;
@@ -280,17 +281,17 @@ export default {
       }
     }
 }
-.product_cart__btn:hover {
+.product-cart__btn:hover {
   cursor: pointer;
 }
-.product_cart__favorite:hover {
+.product-cart__favorite:hover {
   cursor: pointer;
 }
 @media  (max-width: 766px) {
- .product_cart__btn {
+ .product-cart__btn {
   display: none;
   }
-  .product_description {
+  .product-description {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -303,7 +304,7 @@ export default {
   }
   }
 
-  .product_size {
+  .product-size {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -328,7 +329,7 @@ export default {
   }
   }
 
-  .product_color {
+  .product-color {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -341,7 +342,7 @@ export default {
   }
   }
 
-  .product_cart {
+  .product-cart {
   display: flex;
   flex-direction: column;
   align-items: center;

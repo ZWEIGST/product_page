@@ -1,41 +1,29 @@
 <template>
-    <div class="product_card__container">
-        <a href=""><img class="product_card__img" :src=img alt="product image">
-        <h2 class="product_card__name">{{ name }}</h2></a>
-        <p class="product_card__price">{{ price }}</p>
-        <p  v-if="priceOld" class="product_card__price-old">{{ priceOld }}</p>
-    </div>
+  <div class="product-card__container">
+    <a href=""
+      ><img class="product-card__img" :src="img" alt="product image" />
+      <h2 class="product-card__name">{{ name }}</h2></a
+    >
+    <p class="product-card__price">{{ price }}</p>
+    <p v-if="priceOld" class="product-card__price-old">{{ priceOld }}</p>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'ProductCard',
-          props: {
-            name: String,
-            price: String,
-            priceOld: String,
-            img: String,
-        },
-    }
+export default {
+  name: "ProductCard",
+  props: {
+    name: String,
+    price: String,
+    priceOld: String,
+    img: String,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-* {  
-    margin: 0;  
-    padding: 0;  
-    box-sizing: border-box;
-}
-@font-face {
-    font-family: Helvetica;
-    src: url(/fonts/helvetica_regular.otf);
-   }
-   h1, h2, h3 {
-    font-family: Helvetica;
-   }
-a {
-    text-decoration: none;
-}
-.product_card {
+@use '../../assets/styles/var.scss';
+.product-card {
  &__container {
   display: grid;
   grid-template-rows: auto;
@@ -57,7 +45,7 @@ a {
    object-fit: cover;
  }
  &__name {
-    color:rgba(51, 51, 51, 1);
+    color:var.$colorTextMain;
     font-size: 10px;
     line-height: 14px;
     font-weight: 400;
@@ -65,19 +53,19 @@ a {
     font-family: Helvetica;
  }
  &__price {
-    color:rgba(51, 51, 51, 1);
+    color:var.$colorTextMain;
     font-size: 10px;
     line-height: 14px;
  }
  &__price-old {
     text-decoration-line: line-through;
-    color: rgba(130, 130, 130, 1);
+    color: var.$colorTextHelper;
     font-size: 10px;
     line-height: 14px;
  }
 }
 @media  (max-width: 766px) {
-  .product_card {
+  .product-card {
   &__container {
    width: 100%;
    height: auto;

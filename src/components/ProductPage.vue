@@ -1,88 +1,94 @@
 <template>
-    <ProductHeader />
-    <div class="product_container">
-        <div class="product_container__gallery" v-show="isDesktop">
-            <img src="https://i.postimg.cc/5yYLGC7D/Gallery-Big.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/fSk8W8fy/Gallery-small-2.png" alt="product image" class="product_container__img"><img src="https://i.postimg.cc/7bLsNLr4/Gallery-small-3.png" alt="product image" class="product_container__img">
-        </div>
-        <div class="product_carousel_container">
-            <ProductCarousel />
-            <ProductDescription />
-        </div>
+  <ProductPageHeader />
+  <div class="product-container">
+
+    <div class="product-carousel_container">
+      <ProductCarousel />
+      <ProductDescription />
     </div>
-    <div class="product_cards">
-        <h2 class="product_cards__heading">ПОХОЖИЕ ТОВАРЫ</h2>
-        <div class="product_cards__container">
-          <ProductCard 
-            v-for="(card, index) in productCard"   
-            :key="index"   
-            :name="card.name"   
-            :img="card.img"   
-            :price="card.price"   
-            :priceOld="card.priceOld"
-           />
-        </div>
+  </div>
+  <div class="product-cards">
+    <h2 class="product-cards__heading">ПОХОЖИЕ ТОВАРЫ</h2>
+    <div class="product-cards__container">
+      <ProductCard
+        v-for="(card, index) in productCard"
+        :key="index"
+        :name="card.name"
+        :img="card.img"
+        :price="card.price"
+        :priceOld="card.priceOld"
+      />
     </div>
+  </div>
 </template>
 
 <script>
-import ProductHeader from '@/components/ProductHeader.vue';
-import ProductCarousel from '@/components/ProductComp/ProductCarousel.vue';
-import ProductDescription from '@/components/ProductComp/ProductDescription.vue';
-import ProductCard from '@/components/ProductComp/ProductCard.vue';
+import ProductPageHeader from "@/components/ProductComp/ProductPageHeader.vue";
+import ProductCarousel from "@/components/ProductComp/ProductCarousel.vue";
+import ProductDescription from "@/components/ProductComp/ProductDescription.vue";
+import ProductCard from "@/components/ProductComp/ProductCard.vue";
 
-    export default {
-        name: 'ProductPage',
-        components: {
-            ProductHeader,
-            ProductCarousel,
-            ProductDescription,
-            ProductCard,
+export default {
+  name: "ProductPage",
+  components: {
+    ProductPageHeader,
+    ProductCarousel,
+    ProductDescription,
+    ProductCard,
+  },
+  data() {
+    return {
+      productCard: [
+        {
+          name: "ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ",
+          img: "https://i.postimg.cc/bsBKntZ4/Image.png",
+          price: "14 900 RUB",
+          priceOld: "8 000 RUB",
         },
-        data () {
-          return {
-          productCard: [
-           {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/bsBKntZ4/Image.png',  price: '14 900 RUB', priceOld: '8 000 RUB'},
-           {name: 'ЖАКЕТ ДВУБОРТНЫЙ, СЕРО-ГОЛУБОЙ', price: '8900 RUB', img: 'https://i.postimg.cc/v4xCtZ9T/Image2.png'},
-           {name: 'ПЛАТЬЕ МАКСИ С ЯРУСАМИ, БЕЛЫЙ', price: '10 500 RUB', img: 'https://i.postimg.cc/cv1n4tk5/Image3.png'},
-           {name: 'КОМБИНЕЗОН СО СТОЙКОЙ, ЧёРНЫЙ', price: '9500 RUB', img: 'https://i.postimg.cc/7CgcjtKy/Image4.png'},
-          ],
-          ProductCarousel: [
-          {name: 'ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ', img: 'https://i.postimg.cc/5yYLGC7D/Gallery-Big.png',  price: '14 900 RUB', priceOld: '8 000 RUB'},
-          ],
-          isDesktop: false,
-          }; 
-          
+        {
+          name: "ЖАКЕТ ДВУБОРТНЫЙ, СЕРО-ГОЛУБОЙ",
+          price: "8900 RUB",
+          img: "https://i.postimg.cc/v4xCtZ9T/Image2.png",
         },
-       mounted() {
+        {
+          name: "ПЛАТЬЕ МАКСИ С ЯРУСАМИ, БЕЛЫЙ",
+          price: "10 500 RUB",
+          img: "https://i.postimg.cc/cv1n4tk5/Image3.png",
+        },
+        {
+          name: "КОМБИНЕЗОН СО СТОЙКОЙ, ЧёРНЫЙ",
+          price: "9500 RUB",
+          img: "https://i.postimg.cc/7CgcjtKy/Image4.png",
+        },
+      ],
+      ProductCarousel: [
+        {
+          name: "ПЛАТЬЕ С V-ОБРАЗНЫМ ВЫРЕЗОМ, БЕЛЫЙ",
+          img: "https://i.postimg.cc/5yYLGC7D/Gallery-Big.png",
+          price: "14 900 RUB",
+          priceOld: "8 000 RUB",
+        },
+      ],
+      isDesktop: false,
+    };
+  },
+  mounted() {
     this.checkViewport();
-    window.addEventListener('resize', this.checkViewport);
+    window.addEventListener("resize", this.checkViewport);
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.checkViewport);
+    window.removeEventListener("resize", this.checkViewport);
   },
   methods: {
     checkViewport() {
       this.isDesktop = window.innerWidth > 766;
     },
   },
-    }
+};
 </script>
 
 <style lang="scss" scoped>
-* {  
-    margin: 0;  
-    padding: 0;  
-    box-sizing: border-box;
-}
-
-@font-face {
-    font-family: Helvetica;
-    src: url(/fonts/helvetica_regular.otf);
-   }
-   h1 {
-    font-family: Helvetica;
-   }
-   .product_container {
+.product-container {
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -96,8 +102,8 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
         max-width: 70px;
         height: 88px;
     }
-   }
-   .product_cards {
+}
+.product-cards {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -115,15 +121,15 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
         flex-direction: row;
         gap: 8px;
     }
-   }
-.product_carousel {
+}
+.product-carousel {
     &_container {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 }
 @media  (max-width: 766px) {
-.product_container {
+.product-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,13 +137,13 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
       display: none;
     }
   }
-  .product_carousel_container {
+  .product-carousel_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 31px;
   }
-  .product_cards {
+  .product-cards {
         &__container {
           display: grid;
           grid-template-columns: repeat(2, 1fr); 
@@ -189,5 +195,5 @@ import ProductCard from '@/components/ProductComp/ProductCard.vue';
       font-size: 20px;
       }
       } 
-}       
+}
 </style>
