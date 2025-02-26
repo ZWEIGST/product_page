@@ -4,13 +4,15 @@
       <h3 class="product-accordion__item-head" @click="handleAccordionClick">
         Описание
       </h3>
-      <div class="product-accordion__item-body"></div>
+      <div class="product-accordion__item-body">
+        Lorem ipsum dolor sit amet.
+      </div>
     </div>
     <div class="product-accordion__item">
       <h3 class="product-accordion__item-head" @click="handleAccordionClick">
         Состав и уход
       </h3>
-      <div class="product-accordion__item-body"></div>
+      <div class="product-accordion__item-body">Lorem, ipsum dolor.</div>
     </div>
   </div>
 </template>
@@ -65,7 +67,8 @@ export default {
       }
     }
     &-body {
-      font-size: 20px;
+      font-size: 10px;
+      color: var.$colorTextMain;
     }
   }
 }
@@ -81,7 +84,7 @@ export default {
       }
       &-body {
         display: none;
-        font-size: 20px;
+        font-size: 10px;
       }
     }
   }
