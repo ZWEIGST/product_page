@@ -17,17 +17,19 @@
         class="carousel-gallery__img"
       />
     </div>
-    <div
-      class="carousel__inner"
-      :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
-    >
+    <div class="carousel-wrapper">
       <div
-        v-for="(image, index) in images"
-        :key="image.id"
-        class="carousel__item"
-        :class="{ active: index === currentIndex }"
+        class="carousel__inner"
+        :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
       >
-        <img :src="image.src" :alt="image.alt" class="carousel__img" />
+        <div
+          v-for="(image, index) in images"
+          :key="image.id"
+          class="carousel__item"
+          :class="{ active: index === currentIndex }"
+        >
+          <img :src="image.src" :alt="image.alt" class="carousel__img" />
+        </div>
       </div>
       <button class="carousel__control carousel__control_prev" @click="prev">
         <img :src="CarouselControlPrev" alt="left arrow" />
@@ -84,6 +86,16 @@ export default {
       isDesktop: false,
     };
   },
+  mounted() {
+    this.checkIfMobile();
+    this.checkViewport();
+    window.addEventListener("resize", this.checkIfMobile);
+    window.addEventListener("resize", this.checkViewport);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkIfMobile);
+    window.removeEventListener("resize", this.checkViewport);
+  },
   methods: {
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -101,16 +113,6 @@ export default {
     checkViewport() {
       this.isDesktop = window.innerWidth > MIN_DESKTOP_SCREEN_WIDTH;
     },
-  },
-  mounted() {
-    this.checkIfMobile();
-    this.checkViewport();
-    window.addEventListener("resize", this.checkIfMobile);
-    window.addEventListener("resize", this.checkViewport);
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.checkIfMobile);
-    window.removeEventListener("resize", this.checkViewport);
   },
 };
 </script>
@@ -134,6 +136,12 @@ export default {
       max-width: 70px;
       height: 88px;
     }
+  }
+  &-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-width: 518px;
   }
   &-indicators {
     position: absolute;
@@ -168,6 +176,7 @@ export default {
   }
   &__item {
     box-sizing: border-box;
+    flex: 0 0 100%;
     max-width: 100%;
     &.active {
       opacity: 1;
