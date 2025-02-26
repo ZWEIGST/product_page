@@ -84,16 +84,6 @@ export default {
       isDesktop: false,
     };
   },
-  mounted() {
-    this.checkIfMobile();
-    this.checkViewport();
-    window.addEventListener("resize", this.checkIfMobile);
-    window.addEventListener("resize", this.checkViewport);
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.checkIfMobile);
-    window.removeEventListener("resize", this.checkViewport);
-  },
   methods: {
     next() {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
@@ -111,6 +101,16 @@ export default {
     checkViewport() {
       this.isDesktop = window.innerWidth > MIN_DESKTOP_SCREEN_WIDTH;
     },
+  },
+  mounted() {
+    this.checkIfMobile();
+    this.checkViewport();
+    window.addEventListener("resize", this.checkIfMobile);
+    window.addEventListener("resize", this.checkViewport);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.checkIfMobile);
+    window.removeEventListener("resize", this.checkViewport);
   },
 };
 </script>
@@ -169,6 +169,9 @@ export default {
   &__item {
     box-sizing: border-box;
     max-width: 100%;
+    &.active {
+      opacity: 1;
+    }
   }
   &__img {
     height: 693px;

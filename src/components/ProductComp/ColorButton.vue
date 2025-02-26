@@ -2,8 +2,11 @@
   <button
     class="product-color__button"
     :style="{ backgroundColor: color.value }"
-    :class="{ 'product-color__button--white': isWhite }"
-    @click="$emit('select', color)"
+    :class="{
+      'product-color__button--white': isWhite,
+      'product-color__button--active': isActive,
+    }"
+    @click="handleClick"
   ></button>
 </template>
 
@@ -14,10 +17,22 @@ export default {
       type: Object,
       required: true,
     },
+    selectedColorId: {
+      type: String,
+      default: null,
+    },
   },
   computed: {
     isWhite() {
       return this.color.value.toLowerCase() === "rgba(255, 255, 255, 1)";
+    },
+    isActive() {
+      return this.color.id === this.selectedColorId;
+    },
+  },
+  methods: {
+    handleClick() {
+      this.$emit("select", this.color);
     },
   },
 };
@@ -31,6 +46,9 @@ export default {
     height: 27px;
     position: relative;
     border: none;
+    &:hover {
+      border: 1px solid rgba(189, 189, 189, 1);
+    }
     &::after {
       content: "";
       position: absolute;
@@ -43,7 +61,7 @@ export default {
       opacity: 0;
       transition: opacity 0.3s ease;
     }
-    &:hover::after {
+    &--active::after {
       opacity: 1;
     }
     &--white {

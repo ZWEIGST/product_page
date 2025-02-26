@@ -3,9 +3,10 @@
     <h4 class="product-color__heading">Цвет: {{ selectedColor }}</h4>
     <div class="product-color__choose">
       <ColorButton
-        v-for="(color, index) in colors"
-        :key="index"
+        v-for="color in colors"
+        :key="color.id"
         :color="color"
+        :selectedColorId="selectedColorId"
         @select="handleColorSelect"
       />
     </div>
@@ -21,17 +22,20 @@ export default {
   },
   data() {
     return {
+      selectedColorId: "color-white",
       colors: [
-        { value: "rgba(255, 255, 255, 1)", name: "белый" },
-        { value: "rgba(0, 0, 0, 1)", name: "чёрный" },
-        { value: "rgba(249, 241, 220, 1)", name: "бежевый" },
+        { id: "color-white", value: "rgba(255, 255, 255, 1)", name: "белый" },
+        { id: "color-black", value: "rgba(0, 0, 0, 1)", name: "чёрный" },
+        { id: "color-beige", value: "rgba(249, 241, 220, 1)", name: "бежевый" },
       ],
       selectedColor: "белый",
     };
   },
   methods: {
     handleColorSelect(color) {
+      this.selectedColorId = color.id;
       this.selectedColor = color.name;
+      this.$emit("select", color);
     },
   },
 };
