@@ -1,0 +1,2 @@
+export const MAX_MOBILE_SCREEN_WIDTH = 766;
+export const MIN_DESKTOP_SCREEN_WIDTH = 767;
