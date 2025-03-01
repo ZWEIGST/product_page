@@ -77,7 +77,6 @@ export default {
     align-items: flex-start;
     width: 100%;
     &__item {
-      margin-right: 23px;
       width: 100%;
       &:first-child {
         margin-top: 32px;
@@ -85,6 +84,7 @@ export default {
       &-body {
         display: none;
         font-size: 10px;
+        width: 100%;
       }
     }
   }

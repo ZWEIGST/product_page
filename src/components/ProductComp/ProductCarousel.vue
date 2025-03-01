@@ -225,6 +225,14 @@ export default {
         width: 100%;
       }
     }
+    &-wrapper {
+      width: 100%;
+      max-width: 100%;
+    }
+    &__img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 </style>
