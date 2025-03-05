@@ -48,7 +48,6 @@ export default {
     line-height: 14px;
     font-weight: 400;
     text-decoration: none;
-    font-family: Helvetica;
   }
   &__price {
     color: var.$colorTextMain;
@@ -75,7 +74,7 @@ export default {
         margin-right: 0;
       }
     }
-    &__heading {
+    &__name {
       margin-top: 9px;
     }
     &__img {

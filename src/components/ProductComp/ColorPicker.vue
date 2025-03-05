@@ -67,7 +67,7 @@ export default {
 
     &__choose {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
       width: 100%;
     }

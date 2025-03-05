@@ -1,7 +1,14 @@
 <template>
   <div class="product-description">
-    <h2 class="product-description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
-    <p class="product-description__price">8900 RUB</p>
+    <div class="product-description-info">
+      <div class="product-description__text">
+        <h2 class="product-description__heading">ЖАКЕТ УДЛИНЁННЫЙ, БЕЛЫЙ</h2>
+        <p class="product-description__price">8900 RUB</p>
+      </div>
+      <button v-show="isMobile" class="product-cart__favorite">
+        <img :src="ProductDescriptionCartFavorite" alt="favorite" />
+      </button>
+    </div>
     <div class="product-selector">
       <SizeSelector />
       <ColorPicker />
@@ -10,7 +17,7 @@
         <button v-show="isDesktop" class="product-cart__btn">
           добавить в корзину
         </button>
-        <button class="product-cart__favorite">
+        <button v-show="isDesktop" class="product-cart__favorite">
           <img :src="ProductDescriptionCartFavorite" alt="favorite" />
         </button>
       </div>
@@ -70,7 +77,6 @@ export default {
 .product-description {
   margin-left: 61px;
   &__heading {
-    font-family: Helvetica;
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
@@ -78,7 +84,6 @@ export default {
     margin-top: 0;
   }
   &__price {
-    font-family: Helvetica;
     font-size: 12px;
     font-weight: 400;
     line-height: 16px;
@@ -105,7 +110,6 @@ export default {
     width: 306px;
     background-color: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
-    font-family: Helvetica;
     font-size: 11px;
     font-weight: 400;
     line-height: 15px;
@@ -144,37 +148,22 @@ export default {
     align-items: flex-start;
     width: calc(100% - 16px);
     margin-left: 16px;
+    width: 100%;
 
     &__price {
       width: 100%;
     }
-  }
-
-  .product-size {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    &__btns {
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      row-gap: 14px;
-    }
-
-    &__choose {
+    &-info {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      flex: 0 0 calc(33% - 14px);
-    }
-
-    &__button {
-      width: 80px;
-      margin: 0;
+      width: 100%;
     }
   }
-
+  .product-selector {
+    width: 100%;
+    margin-right: 24px;
+  }
   .product-cart {
     display: flex;
     flex-direction: column;
