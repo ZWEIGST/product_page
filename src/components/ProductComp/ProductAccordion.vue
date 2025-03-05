@@ -69,6 +69,7 @@ export default {
     &-body {
       font-size: 10px;
       color: var.$colorTextMain;
+      display: none;
     }
   }
 }
