@@ -32,8 +32,8 @@ import ProductAccordion from "./ProductAccordion.vue";
 import SizeSelector from "./SizeSelector.vue";
 import ColorPicker from "./ColorPicker.vue";
 
-import { MAX_MOBILE_SCREEN_WIDTH } from "@/components/constants";
-import { MIN_DESKTOP_SCREEN_WIDTH } from "@/components/constants";
+import { MAX_MOBILE_SCREEN_WIDTH } from "@/ProductPage/constants";
+import { MIN_DESKTOP_SCREEN_WIDTH } from "@/ProductPage/constants";
 
 import ProductDescriptionCartFavorite from "@/assets/icons/ProductDescriptionCartFavorite.svg";
 

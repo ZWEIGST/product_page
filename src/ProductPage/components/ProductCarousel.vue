@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import { MAX_MOBILE_SCREEN_WIDTH } from "@/components/constants";
-import { MIN_DESKTOP_SCREEN_WIDTH } from "@/components/constants";
+import { MAX_MOBILE_SCREEN_WIDTH } from "@/ProductPage/constants";
+import { MIN_DESKTOP_SCREEN_WIDTH } from "@/ProductPage/constants";
 
 import CarouselControlPrev from "@/assets/icons/CarouselControlPrev.svg";
 import CarouselControlNext from "@/assets/icons/CarouselControlNext.svg";
