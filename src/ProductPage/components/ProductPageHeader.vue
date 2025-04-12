@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { MIN_DESKTOP_SCREEN_WIDTH } from "@/components/constants";
+import { MIN_DESKTOP_SCREEN_WIDTH } from "@/ProductPage/constants";
 
 import ProductHeaderNavCab from "@/assets/icons/ProductHeaderNavCab.svg";
 import ProductHeaderNavCart from "@/assets/icons/ProductHeaderNavCart.svg";

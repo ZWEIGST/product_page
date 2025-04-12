@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import ProductPageHeader from "@/components/ProductPageHeader.vue";
-import ProductCarousel from "@/components/ProductCarousel.vue";
-import ProductDescription from "@/components/ProductComp/ProductDescription.vue";
-import ProductCard from "@/components/ProductCard.vue";
+import ProductPageHeader from "./components/ProductPageHeader.vue";
+import ProductCarousel from "./components/ProductCarousel.vue";
+import ProductDescription from "./components/ProductDescription.vue";
+import ProductCard from "./components/ProductCard.vue";
 
 export default {
   name: "ProductPage",
