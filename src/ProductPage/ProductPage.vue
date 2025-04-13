@@ -2,7 +2,7 @@
   <ProductPageHeader />
 
   <div class="product-page__container">
-    <div class="product-carousel_container">
+    <div class="product-carousel__container">
       <ProductCarousel
         v-for="(card, index) in ProductCarousel"
         :key="index"
@@ -86,7 +86,7 @@ export default {
 .product-page__container {
   max-width: 1360px;
 }
-.product-carousel_container {
+.product-carousel__container {
   display: flex;
   justify-content: center;
 }
@@ -114,7 +114,7 @@ export default {
   }
 }
 @media (max-width: 766px) {
-  .product-carousel_container {
+  .product-carousel__container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,44 +132,6 @@ export default {
     }
     &__heading {
       margin-left: 16px;
-    }
-  }
-  .product_card {
-    &__container {
-      width: 100%;
-      height: auto;
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-    &__heading {
-      margin-top: 9px;
-    }
-    &__img {
-      height: auto;
-      aspect-ratio: 3/5;
-      object-fit: cover;
-      width: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  }
-  .product_accordion {
-    align-self: center;
-    &__item {
-      margin-left: 16px;
-      margin-right: 23px;
-      &:first-child {
-        margin-top: 32px;
-      }
-    }
-    &-body {
-      display: none;
-      font-size: 20px;
     }
   }
 }

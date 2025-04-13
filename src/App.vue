@@ -14,18 +14,21 @@ export default {
 </script>
 
 <style lang="scss">
+
+@font-face {
+  font-family: Helvetica;
+  src: url(/fonts/helvetica_regular.otf);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Helvetica;
 }
+
+
 a {
   text-decoration: none;
-}
-body {
-  @font-face {
-    font-family: Helvetica;
-    src: url(/fonts/helvetica_regular.otf);
-  }
 }
 </style>
